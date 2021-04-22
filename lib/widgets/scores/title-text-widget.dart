@@ -1,7 +1,7 @@
-import 'package:cricbuzz/models/match-model.dart';
+import 'package:cricbuzz/models/match_model.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
 class TitleTextWidget extends StatelessWidget {
   final MatchModel matchModel;

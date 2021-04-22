@@ -1,3 +1,8 @@
+import 'team_model.dart';
+import 'series_model.dart';
+import 'venue_model.dart';
+import 'scores_model.dart';
+
 class MatchModel {
   int id;
   int matchTypeId;
@@ -5,8 +10,8 @@ class MatchModel {
   String name;
   String status;
   Venue venue;
-  HomeTeam homeTeam;
-  HomeTeam awayTeam;
+  Team homeTeam;
+  Team awayTeam;
   String currentMatchState;
   bool isMultiDay;
   String matchSummaryText;
@@ -51,28 +56,24 @@ class MatchModel {
   MatchModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     matchTypeId = json['matchTypeId'];
-    series =
-        json['series'] != null ? new Series.fromJson(json['series']) : null;
+    series = json['series'] != null ? Series.fromJson(json['series']) : null;
     name = json['name'];
     status = json['status'];
-    venue = json['venue'] != null ? new Venue.fromJson(json['venue']) : null;
-    homeTeam = json['homeTeam'] != null
-        ? new HomeTeam.fromJson(json['homeTeam'])
-        : null;
-    awayTeam = json['awayTeam'] != null
-        ? new HomeTeam.fromJson(json['awayTeam'])
-        : null;
+    venue = json['venue'] != null ? Venue.fromJson(json['venue']) : null;
+    homeTeam =
+        json['homeTeam'] != null ? new Team.fromJson(json['homeTeam']) : null;
+    awayTeam =
+        json['awayTeam'] != null ? new Team.fromJson(json['awayTeam']) : null;
     currentMatchState = json['currentMatchState'];
-    winningTeamId=json['winningTeamId']!=null?json['winningTeamId']:null;
+    winningTeamId =
+        json['winningTeamId'] != null ? json['winningTeamId'] : null;
     isMultiDay = json['isMultiDay'];
     matchSummaryText = json['matchSummaryText'];
     scores =
         json['scores'] != null ? new Scores.fromJson(json['scores']) : null;
     if (json['liveStreams'] != null) {
       liveStreams = new List<Null>();
-      json['liveStreams'].forEach((v) {
-        
-      });
+      json['liveStreams'].forEach((v) {});
     }
     isLive = json['isLive'];
     currentInningId = json['currentInningId'];
@@ -109,9 +110,7 @@ class MatchModel {
     if (this.scores != null) {
       data['scores'] = this.scores.toJson();
     }
-    if (this.liveStreams != null) {
-     
-    }
+    if (this.liveStreams != null) {}
     data['isLive'] = this.isLive;
     data['currentInningId'] = this.currentInningId;
     data['isMatchDrawn'] = this.isMatchDrawn;
@@ -125,94 +124,3 @@ class MatchModel {
   }
 }
 
-class Series {
-  int id;
-  String name;
-  String shortName;
-
-  Series({this.id, this.name, this.shortName});
-
-  Series.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    shortName = json['shortName'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['shortName'] = this.shortName;
-    return data;
-  }
-}
-
-class Venue {
-  String name;
-  String shortName;
-
-  Venue({this.name, this.shortName});
-
-  Venue.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    shortName = json['shortName'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['shortName'] = this.shortName;
-    return data;
-  }
-}
-
-class HomeTeam {
-  bool isBatting;
-  int id;
-  String name;
-  String shortName;
-
-  HomeTeam({this.isBatting, this.id, this.name, this.shortName});
-
-  HomeTeam.fromJson(Map<String, dynamic> json) {
-    isBatting = json['isBatting'];
-    id = json['id'];
-    name = json['name'];
-    shortName = json['shortName'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['isBatting'] = this.isBatting;
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['shortName'] = this.shortName;
-    return data;
-  }
-}
-
-class Scores {
-  String homeScore;
-  String homeOvers;
-  String awayScore;
-  String awayOvers;
-
-  Scores({this.homeScore, this.homeOvers, this.awayScore, this.awayOvers});
-
-  Scores.fromJson(Map<String, dynamic> json) {
-    homeScore = json['homeScore'];
-    homeOvers = json['homeOvers'];
-    awayScore = json['awayScore'];
-    awayOvers = json['awayOvers'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['homeScore'] = this.homeScore;
-    data['homeOvers'] = this.homeOvers;
-    data['awayScore'] = this.awayScore;
-    data['awayOvers'] = this.awayOvers;
-    return data;
-  }
-  
-}

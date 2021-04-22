@@ -12,6 +12,11 @@ final liveStatusStyle =
 const upComingStatusStyle = TextStyle(color: Color(0xffEE7F3B));
 const footerTextStyle = TextStyle(color: Colors.black87);
 
+const headers = {
+        "x-rapidapi-key": "eab4103546mshb731d74c4f0ecb1p185214jsn8d334d99d9df",
+        "x-rapidapi-host": "dev132-cricket-live-scores-v1.p.rapidapi.com",
+      };
+
 enum MatchStatus { LIVE, COMPLETED, UPCOMING }
 
 String getDateTime(String dt) {
@@ -32,4 +37,13 @@ String getScores(String scores) {
     return modifiedScore;
   }
   return scores;
+}
+
+String getUpperCaseString(String ourString)
+{
+  if(ourString!=null)
+  {
+    return ourString.toUpperCase();
+  }
+  return null;
 }

@@ -1,8 +1,10 @@
-import 'package:cricbuzz/models/match-model.dart';
+import 'package:cricbuzz/models/match_model.dart';
+import 'package:cricbuzz/screens/match_detail/commentary_screen.dart';
 import 'package:cricbuzz/screens/screens.dart';
-import 'package:cricbuzz/widgets/match-widget-footer.dart';
+
 import 'package:flutter/material.dart';
 
+import 'match-widget-footer.dart';
 import 'scorecard-content-widget.dart';
 
 class MatchDetailsWidget extends StatelessWidget {
@@ -12,9 +14,9 @@ class MatchDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(MyScreen.routeName, arguments: {
-          'seriesid': matchModel.series.id,
-          'matchid': matchModel.id
+        Navigator.of(context).pushNamed(CommentaryScreen.routeName, arguments: {
+          'seriesid': matchModel.series.id.toString(),
+          'matchid': matchModel.id.toString()
         });
       },
       child: Card(

@@ -1,10 +1,10 @@
-import 'package:cricbuzz/models/match-model.dart';
-import 'package:cricbuzz/widgets/title-text-widget.dart';
+import 'package:cricbuzz/models/match_model.dart';
+
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
 import 'match_scores_widget.dart';
 import 'match_summary_widget.dart';
+import 'title-text-widget.dart';
 
 class ScorecardContent extends StatelessWidget {
   const ScorecardContent({
@@ -23,12 +23,10 @@ class ScorecardContent extends StatelessWidget {
         SizedBox(height: 8),
         MatchHomeScores(
           matchModel: matchModel,
-          
         ),
         SizedBox(height: 15),
         MatchAwayScores(
           matchModel: matchModel,
-          
         ),
         SizedBox(
           height: 12,

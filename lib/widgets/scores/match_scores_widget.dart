@@ -1,7 +1,5 @@
-import 'package:cricbuzz/models/match-model.dart';
+import 'package:cricbuzz/models/match_model.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 
 class MatchHomeScores extends StatelessWidget {
   const MatchHomeScores({
@@ -21,10 +19,9 @@ class MatchHomeScores extends StatelessWidget {
           Text(
             matchModel.scores.homeScore,
             style: TextStyle(
-                fontWeight:
-                    matchModel.winningTeamId == matchModel.homeTeam.id
-                        ? FontWeight.bold
-                        : FontWeight.normal),
+                fontWeight: matchModel.winningTeamId == matchModel.homeTeam.id
+                    ? FontWeight.bold
+                    : FontWeight.normal),
           ),
       ],
     );
@@ -49,13 +46,11 @@ class MatchAwayScores extends StatelessWidget {
           Text(
             matchModel.scores.awayScore,
             style: TextStyle(
-                fontWeight:
-                    matchModel.winningTeamId == matchModel.awayTeam.id
-                        ? FontWeight.bold
-                        : FontWeight.normal),
+                fontWeight: matchModel.winningTeamId == matchModel.awayTeam.id
+                    ? FontWeight.bold
+                    : FontWeight.normal),
           ),
       ],
     );
   }
 }
-

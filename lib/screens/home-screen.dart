@@ -1,6 +1,6 @@
 import 'package:cricbuzz/apis/cricket-api.dart';
-import 'package:cricbuzz/providers/internet_provider.dart';
-import 'package:cricbuzz/widgets/match-widget.dart';
+
+import 'package:cricbuzz/widgets/scores/match-widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -46,7 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
               child: FutureBuilder(
                   future: futureData,
                   builder: (ctx, snapshotData) {
-                    print('${snapshotData.error}  ${snapshotData.error}');
                     if (snapshotData.hasData &&
                         snapshotData.connectionState == ConnectionState.done) {
                       return Swiper(
