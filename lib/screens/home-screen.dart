@@ -27,27 +27,33 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Feature Matches'),
-            Expanded(
-              child: FutureBuilder(
-                  future: futureData,
-                  builder: (ctx, snapshotData) {
-                    if (snapshotData.hasData &&
-                        snapshotData.connectionState == ConnectionState.done) {
-                      return Swiper(
+            FutureBuilder(
+                future: futureData,
+                builder: (ctx, snapshotData) {
+                  if (snapshotData.hasData &&
+                      snapshotData.connectionState == ConnectionState.done) {
+                    return Container(
+                      height: 220,
+                      child: Swiper(
                         itemBuilder: (BuildContext context, int index) {
                           return MatchDetailsWidget(
                             matchModel: snapshotData.data[index],
                           );
                         },
+                        outer: true,
                         itemCount: snapshotData.data.length,
                         viewportFraction: 0.8,
+                        scale: 0.9,
                         loop: false,
-                      );
-                    }
+                        pagination: SwiperPagination(
+                            builder: DotSwiperPaginationBuilder(
+                                color: Colors.grey, activeColor: Colors.blue)),
+                      ),
+                    );
+                  }
 
-                    return Center(child: CircularProgressIndicator());
-                  }),
-            ),
+                  return Center(child: CircularProgressIndicator());
+                }),
           ],
         ),
       ),
