@@ -19,30 +19,30 @@ class MatchDetailsWidget extends StatelessWidget {
           'matchid': matchModel.id.toString()
         });
       },
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Stack(
-              children: [
-                ScorecardContent(matchModel: matchModel),
-                matchModel.status == 'UPCOMING'
-                    ? Positioned(
-                        right: 8,
-                        top: 7,
-                        child: Icon(
-                          Icons.notifications_outlined,
-                          color: Colors.grey[600],
-                        ))
-                    : Container()
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            FooterContainer()
-          ],
+      child: Container(
+        child: Card(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Stack(
+                children: [
+                  ScorecardContent(matchModel: matchModel),
+                  matchModel.status == 'UPCOMING'
+                      ? Positioned(
+                          right: 8,
+                          top: 7,
+                          child: Icon(
+                            Icons.notifications_outlined,
+                            color: Colors.grey[600],
+                          ))
+                      : Container()
+                ],
+              ),
+              Spacer(),
+              FooterContainer()
+            ],
+          ),
         ),
       ),
     );
