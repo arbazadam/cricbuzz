@@ -1,6 +1,7 @@
 import 'package:cricbuzz/apis/cricket-api.dart';
 import 'package:cricbuzz/widgets/commentary/commentary_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'match_detail/commentary_screen.dart';
 
@@ -25,7 +26,7 @@ class _MyScreenState extends State<MyScreen> {
     if (isInit) {
       print('called $count times');
       val = ModalRoute.of(context).settings.arguments as Map<String, String>;
-      futureData = CricketApi.getMatchData(endPoint: 'match.php', data: val);
+      futureData = Provider.of<CricketApi>(context,listen:false).getMatchData(endPoint: 'match.php', data: val);
     }
     isInit = false;
   }

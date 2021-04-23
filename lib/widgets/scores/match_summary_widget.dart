@@ -1,4 +1,3 @@
-import 'package:cricbuzz/models/match_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -6,23 +5,27 @@ import '../../constants.dart';
 class MatchSummary extends StatelessWidget {
   const MatchSummary({
     Key key,
-    @required this.matchModel,
+    @required this.status,
+    @required this.matchSummaryText,
+    @required this.dateTime,
   }) : super(key: key);
 
-  final MatchModel matchModel;
+  final String status;
+  final String matchSummaryText;
+  final String dateTime;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-        matchModel.status == 'COMPLETED'
-            ? matchModel.matchSummaryText
-            : matchModel.status == 'UPCOMING'
-                ? getDateTime(matchModel.startDateTime)
-                : matchModel.matchSummaryText,
+        status == 'COMPLETED'
+            ? matchSummaryText
+            : status == 'UPCOMING'
+                ? getDateTime(dateTime)
+                : matchSummaryText,
         overflow: TextOverflow.ellipsis,
-        style: matchModel.status == 'COMPLETED'
+        style: status == 'COMPLETED'
             ? completedStatusStyle
-            : matchModel.status == 'LIVE'
+            : status == 'LIVE'
                 ? liveStatusStyle(context)
                 : upComingStatusStyle);
   }

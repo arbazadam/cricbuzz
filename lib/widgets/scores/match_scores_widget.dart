@@ -8,7 +8,7 @@ class MatchHomeScores extends StatelessWidget {
   }) : super(key: key);
 
   final MatchModel matchModel;
-
+//There can be 4 statuses live,inprogress,completed,upcoming
   @override
   Widget build(BuildContext context) {
     return Row(

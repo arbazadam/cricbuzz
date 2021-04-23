@@ -19,19 +19,26 @@ class ScorecardContent extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.fromLTRB(15, 10, 40, 0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        TitleTextWidget(matchModel: matchModel),
+        TitleTextWidget(
+          matchName: matchModel.name,
+          seriesName: matchModel.series.name,
+        ),
         SizedBox(height: 8),
         MatchHomeScores(
           matchModel: matchModel,
         ),
         SizedBox(height: 15),
         MatchAwayScores(
-          matchModel: matchModel,
+          matchModel:matchModel
         ),
         SizedBox(
           height: 12,
         ),
-        MatchSummary(matchModel: matchModel),
+        MatchSummary(
+          status: matchModel.status,
+          matchSummaryText: matchModel.matchSummaryText,
+          dateTime: matchModel.startDateTime,
+        ),
       ]),
     );
   }

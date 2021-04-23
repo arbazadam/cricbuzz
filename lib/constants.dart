@@ -47,3 +47,5 @@ String getUpperCaseString(String ourString)
   }
   return null;
 }
+final infoLeadingStyle=TextStyle(color: Colors.grey);
+const infoSizedBox=SizedBox(height:5);

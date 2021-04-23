@@ -4,18 +4,19 @@ import 'package:flutter/material.dart';
 import '../../constants.dart';
 
 class TitleTextWidget extends StatelessWidget {
-  final MatchModel matchModel;
-  TitleTextWidget({this.matchModel});
+  final String matchName;
+  final String seriesName;
+  TitleTextWidget({this.matchName,this.seriesName});
   Widget build(BuildContext context) {
     return RichText(
       overflow: TextOverflow.ellipsis,
       text: TextSpan(children: [
-        if (matchModel.name != null && matchModel.name != '')
+        if (matchName != null && matchName != '')
           TextSpan(
-            text: '${matchModel.name}',
+            text: '$matchName',
             style: seriesNameStyle,
           ),
-        if (matchModel.name != null && matchModel.name != '')
+        if (matchName != null && matchName != '')
           WidgetSpan(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
@@ -26,7 +27,7 @@ class TitleTextWidget extends StatelessWidget {
             ),
           ),
         TextSpan(
-          text: "${matchModel.series.name}",
+          text: "$seriesName",
           style: seriesNameStyle,
         ),
       ]),

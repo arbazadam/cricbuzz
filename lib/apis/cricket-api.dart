@@ -7,8 +7,13 @@ import 'package:flutter/foundation.dart';
 
 import 'package:http/http.dart' as http;
 
-class CricketApi{
-  static Future<List<MatchModel>> getData(
+class CricketApi with ChangeNotifier {
+  Map<String, String> _matchIdAndSeriesId = {};
+  Map<String, String> get matchIdAndSeriesId {
+    return {..._matchIdAndSeriesId};
+  }
+
+  Future<List<MatchModel>> getData(
       {@required String endPoint, Map<String, Object> data}) async {
     try {
       final map = await fetchResponse(endPoint: endPoint, data: data);
@@ -24,10 +29,11 @@ class CricketApi{
     }
   }
 
-  static Future<MatchModel> getMatchData(
+  Future<MatchModel> getMatchData(
       {@required String endPoint, Map<String, Object> data}) async {
     try {
       final responseBody = await fetchResponse(endPoint: endPoint, data: data);
+
       return MatchModel.fromJson(responseBody['match']);
     } catch (err) {
       print('reaching the catch block for some reason');
@@ -35,7 +41,7 @@ class CricketApi{
     }
   }
 
-  static Future<Comments> getCommentary(Map data, String endPoint) async {
+   Future<Comments> getCommentary(Map data, String endPoint) async {
     try {
       final responseData = await fetchResponse(endPoint: endPoint, data: data);
 
@@ -47,8 +53,21 @@ class CricketApi{
       return null;
     }
   }
+  
+  Future<MatchModel> getMatchLiveAndHighlights(
+      {@required String endPoint, Map<String, Object> data}) async {
+    try {
+      final responseBody = await fetchResponse(endPoint: endPoint, data: data);
 
-  static Future<Map> fetchResponse(
+      return MatchModel.fromJson(responseBody['match']);
+    } catch (err) {
+      print('reaching the catch block for some reason');
+      return null;
+    }
+  }
+
+
+   Future<Map> fetchResponse(
       {@required String endPoint, Map<String, String> data}) async {
     String queryString = Uri(queryParameters: data).query;
     var requestUrl = baseUrl + '$endPoint?' + queryString;

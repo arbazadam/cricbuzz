@@ -1,6 +1,5 @@
 import 'package:cricbuzz/apis/cricket-api.dart';
 
-import 'package:cricbuzz/widgets/commentary/commentary_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../no_internet_screen.dart';
@@ -16,14 +15,16 @@ class CommentaryScreen extends StatefulWidget {
 class _CommentaryScreenState extends State<CommentaryScreen> {
   var isInit = true;
   var futureData;
+  var val;
   @override
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     if (isInit) {
-      final val =
+       val =
           ModalRoute.of(context).settings.arguments as Map<String, String>;
-      futureData = CricketApi.getCommentary(val, 'comments.php');
+          print(val);
+      //futureData = CricketApi.getCommentary(val, 'comments.php');
     }
     isInit = false;
   }
@@ -38,7 +39,7 @@ class _CommentaryScreenState extends State<CommentaryScreen> {
         child: Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: TabBarView(children: [
-            MatchInfoScreen(),
+            MatchInfoScreen(rcvdData: val,),
             NoInternetScreen(),
             NoInternetScreen(),
             NoInternetScreen(),

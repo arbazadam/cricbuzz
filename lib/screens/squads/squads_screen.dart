@@ -23,13 +23,13 @@ class _SquadsScreenState extends State<SquadsScreen> {
               Container(
                 width: MediaQuery.of(context).size.width*.5,
                 child: Tab(
-                  text: getUpperCaseString('royal challengers bangalore'),
+                  text: getUpperCaseString('Royal Challengers Bangalore'),
                 ),
               ),
               Container(
                 width: MediaQuery.of(context).size.width*.5,
                 child: Tab(
-                  text: getUpperCaseString('rajasthan royals'),
+                  text: getUpperCaseString('Rajasthan Royals'),
                 ),
               ),
             ]),
